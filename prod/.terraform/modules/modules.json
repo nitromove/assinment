@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"aws_instance","Source":"./ec2_module","Dir":"ec2_module"}]}
