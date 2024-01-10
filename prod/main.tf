@@ -7,19 +7,19 @@ terraform {
   }
 }
 
-# Configure the AWS Provider
 provider "aws" {
   region = var.region
 }
 
-# Create a VPC
 resource "aws_vpc" "my_vpc" {
-  cidr_block = var.vpc_config[count.index]
+    count = length(var.vpc_config)
+  cidr_block = var.vpc_config[count.index].cidr_block
+
 }
 
 resource "aws_subnet" "vpc_subnets" {
   vpc_id     = aws_vpc.my_vpc.id
-  cidr_block = var.vpc_config[count.index]
+    cidr_block = var.vpc_config[count.index].cidr_block
 }
 
 module "aws_instance" {
